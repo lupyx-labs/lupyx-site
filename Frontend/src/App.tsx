@@ -1,32 +1,23 @@
 
+import Header from "./components/layout/Header";
+
 function App() {
   return (
-    <main className="min-h-screen bg-lupyx-navy flex flex-col items-center justify-center px-6">
+    <>
+      <Header />
 
-      <div className="max-w-3xl text-center">
+      <main className="flex min-h-screen flex-col items-center justify-center gap-4 bg-lupyx-navy px-6 text-center">
 
-        <span className="font-mono text-xs tracking-widest text-lupyx-cyan">
-          LUPYX / DIGITAL PRODUCT STUDIO
-        </span>
-
-        <h1 className="mt-6 font-heading text-6xl font-bold tracking-tight text-lupyx-white md:text-7xl">
+        <h1 className="font-heading text-5xl font-bold text-lupyx-white">
           Lupyx
         </h1>
 
-        <p className="mt-5 font-body text-lg leading-relaxed text-lupyx-ice">
-          Estúdio independente que cria, desenvolve
-          e evolui produtos digitais próprios.
+        <p className="font-body text-lg text-lupyx-ice">
+          Estúdio independente de produtos digitais.
         </p>
 
-        <div className="mt-10 h-px w-full bg-lupyx-navy-light" />
-
-        <p className="mt-5 font-mono text-xs text-lupyx-cyan">
-          BUILD • CREATE • EVOLVE
-        </p>
-
-      </div>
-
-    </main>
+      </main>
+    </>
   );
 }
 
