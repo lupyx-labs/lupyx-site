@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="1000" fill="none" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<!-- Structural angular shards matching Lupyx identity -->
+<polygon fill="#0b1c30" opacity="0.9" points="410,160 540,320 240,520"></polygon>
+<polygon fill="#102034" opacity="0.85" points="565,230 640,370 530,360"></polygon>
+<polygon fill="#1b2b3f" opacity="0.95" points="240,520 425,350 705,465 835,520 625,595 425,595"></polygon>
+<polygon fill="#0b1c30" opacity="0.9" points="205,580 370,835 520,670 425,670"></polygon>
+<polygon fill="#102034" points="350,350 425,350 425,670 520,670 625,595 735,625 540,780 445,795"></polygon>
+<!-- Subtle Secondary Cyan Light Shard from Logo Identity -->
+<polygon fill="#5de6ff" opacity="0.85" points="445,795 540,780 735,625 565,650"></polygon>
+<!-- Interactive Piercing Cyan Eye Group -->
+<g id="wolf-eyes">
+<!-- Eye housing cutout -->
+<polygon fill="#031427" points="560,425 655,470 580,472"></polygon>
+<!-- Luminescent glowing pupil -->
+<polygon style="filter: drop-shadow(0px 0px 12px #5de6ff)" fill="#5de6ff" id="eye-pupil-main" points="590,446 642,468 600,469"></polygon>
+<polygon style="filter: drop-shadow(0px 0px 8px #ffffff)" fill="#ffffff" id="eye-pupil-glow" points="598,452 630,466 605,467"></polygon>
+</g>
+</svg>
