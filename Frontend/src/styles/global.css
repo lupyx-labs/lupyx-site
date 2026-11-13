@@ -1,0 +1,36 @@
+
+@import "tailwindcss";
+
+/* Identidade visual da Lupyx */
+@theme {
+  --color-lupyx-navy: #0B1B3A;
+  --color-lupyx-navy-light: #132A52;
+  --color-lupyx-cyan: #22D3EE;
+  --color-lupyx-white: #FFFFFF;
+  --color-lupyx-ice: #F4F8FB;
+  --color-lupyx-slate: #64748B;
+  --font-heading: "Space Grotesk Variable", sans-serif;
+  --font-body: "Inter Variable", sans-serif;
+  --font-mono: "JetBrains Mono Variable", monospace;
+  --font-sans: "Inter Variable", sans-serif;
+}
+
+/* Configurações globais */
+:root {
+  font-family: var(--font-body);;
+  color: var(--color-lupyx-white);
+  background-color: var(--color-lupyx-navy);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
