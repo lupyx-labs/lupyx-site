@@ -1,6 +1,9 @@
 
 import Header from "./components/layout/Header";
-import Hero from "./components/home/Hero"
+
+import Hero from "./components/home/Hero";
+import WolfExperience from "./components/home/WolfExperience";
+import DawnTransition from "./components/home/DawnTransition";
 
 function App() {
   return (
@@ -8,7 +11,19 @@ function App() {
       <Header />
 
       <main className="pt-20">
-        <Hero />
+
+        {/* Área compartilhada da experiência */}
+        <div className="relative isolate">
+
+          {/* Conteúdo principal */}
+          <Hero />
+
+          <DawnTransition />
+
+          {/* Lobo interativo */}
+          <WolfExperience />
+
+        </div>
       </main>
     </>
   );

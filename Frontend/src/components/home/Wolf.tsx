@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 export default function Wolf() {
 
 const headRef = useRef<SVGGElement>(null);
+const pupilRef = useRef<SVGGElement>(null);
 
 useEffect(() => {
   // Evita animações em dispositivos sem mouse
@@ -30,6 +31,17 @@ useEffect(() => {
   let targetY = 0;
   let targetRotation = 0;
 
+  // Posição atual dos olhos
+  let currentEyeX = 0;
+  let currentEyeY = 0;
+
+  // Posição desejada dos olhos
+  let targetEyeX = 0;
+  let targetEyeY = 0;
+
+  // Velocidade independente dos olhos
+  const eyeSmoothness = 0.48;
+
   let frameId: number | null = null;
 
   const animate = () => {
@@ -40,6 +52,21 @@ useEffect(() => {
     currentRotation +=
       (targetRotation - currentRotation) * smoothness;
 
+
+    // Movimento independente das pupilas
+    currentEyeX +=
+    (targetEyeX - currentEyeX) * eyeSmoothness;
+
+    currentEyeY +=
+    (targetEyeY - currentEyeY) * eyeSmoothness;
+
+    // Aplica o deslocamento ao grupo SVG dos olhos
+    pupilRef.current?.setAttribute(
+    "transform",
+    `translate(${currentEyeX} ${currentEyeY})`
+    );
+
+
     // Movimenta o grupo SVG
     headRef.current?.setAttribute(
       "transform",
@@ -48,10 +75,11 @@ useEffect(() => {
     );
 
     const remaining =
-      Math.abs(targetX - currentX) +
-      Math.abs(targetY - currentY) +
-      Math.abs(targetRotation - currentRotation);
-
+     Math.abs(targetX - currentX) +
+     Math.abs(targetY - currentY) +
+     Math.abs(targetRotation - currentRotation) +
+     Math.abs(targetEyeX - currentEyeX) +
+     Math.abs(targetEyeY - currentEyeY);
     // Continua animando apenas enquanto necessário
     if (remaining > 0.03) {
       frameId = requestAnimationFrame(animate);
@@ -75,6 +103,10 @@ useEffect(() => {
     targetX = mouseX * -intensityX;
     targetY = mouseY * intensityY;
     targetRotation = mouseX * -maxRotation;
+
+    // Movimento independente dos olhos
+    targetEyeX = mouseX * -6;
+    targetEyeY = mouseY * 3;
 
     if (frameId === null) {
       frameId = requestAnimationFrame(animate);
@@ -184,33 +216,36 @@ useEffect(() => {
         {/* OLHOS */}
         <g id="wolf-eyes">
 
-          {/* Cavidade do olho */}
-          <polygon
+        {/* Cavidade do olho — permanece fixa */}
+        <polygon
             fill="#031427"
             points="560,425 655,470 580,472"
-          />
+        />
 
-          {/* Brilho ciano */}
-          <polygon
+        {/* Pupilas — movimentação independente */}
+        <g ref={pupilRef}>
+
+            <polygon
             id="eye-pupil-main"
             fill="#5de6ff"
             points="590,446 642,468 600,469"
             style={{
-              filter: "drop-shadow(0 0 12px #5de6ff)"
+                filter: "drop-shadow(0 0 12px #5de6ff)"
             }}
-          />
+            />
 
-          {/* Reflexo branco */}
-          <polygon
+            <polygon
             id="eye-pupil-glow"
             fill="#ffffff"
             points="598,452 630,466 605,467"
             style={{
-              filter: "drop-shadow(0 0 8px #ffffff)"
+                filter: "drop-shadow(0 0 8px #ffffff)"
             }}
-          />
+            />
 
         </g>
+        </g>
+
       </g>
     </svg>
   );
