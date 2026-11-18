@@ -1,47 +1,47 @@
+
 import { useEffect, useRef, useState } from "react";
 import MoodyShowcase from "./MoodyShowcase";
 
 export default function AppsSection() {
+  const pratikImageRef = useRef<HTMLDivElement>(null);
 
-const pratikImageRef = useRef<HTMLDivElement>(null);
-const [isPratikVisible, setIsPratikVisible] = useState(false);
-const [isPratikLoaded, setIsPratikLoaded] = useState(false);
+  const [isPratikVisible, setIsPratikVisible] = useState(false);
+  const [isPratikLoaded, setIsPratikLoaded] = useState(false);
 
-useEffect(() => {
-  const element = pratikImageRef.current;
+  // Detecta quando a imagem do Pratik entra na tela
+  useEffect(() => {
+    const element = pratikImageRef.current;
 
-  if (!element) return;
+    if (!element) return;
 
-  // Respeita a preferência do usuário
-  // por animações reduzidas
-  const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-  if (reduceMotion) {
-    setIsPratikVisible(true);
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        setIsPratikVisible(true);
-
-        // A entrada acontece somente uma vez
-        observer.disconnect();
-      }
-    },
-    {
-      threshold: 0.15,
-      rootMargin: "0px 0px -5% 0px",
+    if (reduceMotion) {
+      setIsPratikVisible(true);
+      return;
     }
-  );
 
-  observer.observe(element);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsPratikVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -5% 0px",
+      }
+    );
 
-  return () => observer.disconnect();
-}, []);
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const showPratik = isPratikVisible && isPratikLoaded;
 
   return (
     <section
@@ -49,45 +49,47 @@ useEffect(() => {
       className="
         relative w-full overflow-hidden
         bg-[#F4F8FB] text-slate-900
-        px-6 py-24
-        sm:px-12
+        px-4 py-20
+        sm:px-8
+        md:px-12
         lg:px-20 lg:py-32
       "
     >
       <div className="relative mx-auto max-w-[1440px]">
 
-        {/* MARCA D'ÁGUA DO STITCH */}
+        {/* MARCA D'ÁGUA */}
         <span
           aria-hidden="true"
           className="
             pointer-events-none absolute
-            -top-16 -left-6
+            -top-12 -left-4
             select-none
-            font-heading text-[68px] font-bold
+            font-heading text-[60px] font-bold
             leading-none tracking-tighter
             text-slate-900/[0.04] uppercase
-            sm:text-[110px]
+            sm:text-[100px]
             lg:-top-24 lg:text-[160px]
           "
         >
           EM DESENVOLVIMENTO
         </span>
 
-        {/* CABEÇALHO DA SEÇÃO */}
+        {/* CABEÇALHO */}
         <div
           className="
             relative z-20 flex flex-col
-            justify-between gap-6 pb-16
+            justify-between gap-4 pb-12
             md:flex-row md:items-end
-            lg:pb-20
+            lg:gap-6 lg:pb-20
           "
         >
           <div>
             <span
               className="
-                mb-2 block font-mono text-xs
-                tracking-widest text-slate-500
-                uppercase
+                mb-3 block font-mono
+                text-[10px] tracking-widest
+                text-slate-500 uppercase
+                sm:text-xs
               "
             >
               02 // PORTFÓLIO PROPRIETÁRIO
@@ -96,10 +98,11 @@ useEffect(() => {
             <h2
               className="
                 max-w-3xl font-heading
-                text-[32px] leading-[38px]
+                text-[28px] leading-[34px]
                 font-semibold tracking-tight
                 text-slate-950
-                sm:text-[48px] sm:leading-[52px]
+                sm:text-[38px] sm:leading-[44px]
+                lg:text-[48px] lg:leading-[52px]
               "
             >
               Produtos que concebemos e mantemos
@@ -121,26 +124,38 @@ useEffect(() => {
         <article
           id="pratik"
           className="
-            relative z-20 grid grid-cols-1
-            items-center gap-12
+            relative z-20 grid
+            grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]
+            items-center gap-3
+            sm:gap-6
+            md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]
             lg:grid-cols-12 lg:gap-16
           "
         >
-          {/* COLUNA ESQUERDA — INFORMAÇÕES */}
+
+          {/* COLUNA ESQUERDA — TEXTO */}
           <div
             className="
-              flex flex-col items-start
+              flex min-w-0 flex-col items-start
               lg:col-span-7
             "
           >
             {/* NÚMERO E STATUS */}
-            <div className="mb-4 flex items-baseline gap-4">
+            <div
+              className="
+                mb-3 flex flex-col
+                items-start gap-2
+                sm:flex-row sm:items-baseline
+                sm:gap-4
+              "
+            >
               <span
                 className="
                   select-none font-heading
-                  text-6xl font-bold leading-none
+                  text-[40px] font-bold leading-none
                   text-slate-300
-                  sm:text-7xl lg:text-8xl
+                  sm:text-6xl
+                  lg:text-8xl
                 "
               >
                 01
@@ -148,19 +163,27 @@ useEffect(() => {
 
               <span
                 className="
-                  inline-flex items-center gap-2
-                  bg-slate-200/80 px-3 py-1
+                  inline-flex max-w-full
+                  items-center gap-2
+                  bg-slate-200/80
+                  px-2 py-1
+                  sm:px-3
                 "
               >
                 <span
-                  className="h-2 w-2 bg-[#00CBE6]"
+                  className="
+                    h-1.5 w-1.5 shrink-0
+                    bg-[#00CBE6]
+                  "
                 />
 
                 <span
                   className="
-                    font-mono text-[10px]
-                    font-semibold tracking-widest
+                    font-mono text-[9px]
+                    font-semibold tracking-wide
                     text-slate-800 uppercase
+                    sm:text-[10px]
+                    sm:tracking-widest
                   "
                 >
                   EM BREVE
@@ -171,22 +194,36 @@ useEffect(() => {
             {/* NOME */}
             <h3
               className="
-                mt-2 font-heading text-4xl
-                font-bold tracking-tight
+                mt-1 font-heading
+                text-2xl font-bold tracking-tight
                 text-slate-950
-                sm:text-5xl
+                sm:text-3xl
+                md:text-4xl
+                lg:text-5xl
               "
             >
               Pratik
             </h3>
 
-            {/* DESCRIÇÃO */}
+            {/* DESCRIÇÃO PARA CELULARES */}
             <p
               className="
-                mt-6 max-w-xl font-body
-                text-base leading-relaxed
+                mt-3 font-body text-sm
+                leading-[1.5] text-slate-700
+                md:hidden
+              "
+            >
+              Encontre profissionais próximos
+              por serviço, preço e distância.
+            </p>
+
+            {/* DESCRIÇÃO COMPLETA */}
+            <p
+              className="
+                mt-6 hidden max-w-xl
+                font-body text-base leading-relaxed
                 text-slate-700
-                sm:text-lg
+                md:block lg:text-lg
               "
             >
               Encontre profissionais para serviços
@@ -199,108 +236,140 @@ useEffect(() => {
             {/* INFORMAÇÕES TÉCNICAS */}
             <div
               className="
-                my-8 grid w-full max-w-xl
-                grid-cols-3 gap-3 border-y
-                border-slate-300/80 py-4
-                sm:gap-6
+                my-8 hidden w-full max-w-xl
+                grid-cols-3 gap-3
+                border-y border-slate-300/80
+                py-4
+                md:grid
+                lg:gap-6
               "
             >
-              <div>
-                <span className="block font-mono text-[10px] text-slate-500 uppercase">
+              <div className="min-w-0">
+                <span
+                  className="
+                    block font-mono text-[10px]
+                    text-slate-500 uppercase
+                  "
+                >
                   Plataforma
                 </span>
-                <span className="font-mono text-xs font-semibold text-slate-900">
+
+                <span
+                  className="
+                    font-mono text-xs font-semibold
+                    text-slate-900
+                  "
+                >
                   MOBILE
                 </span>
               </div>
 
-              <div>
-                <span className="block font-mono text-[10px] text-slate-500 uppercase">
+              <div className="min-w-0">
+                <span
+                  className="
+                    block font-mono text-[10px]
+                    text-slate-500 uppercase
+                  "
+                >
                   Segmento
                 </span>
-                <span className="font-mono text-xs font-semibold text-slate-900">
+
+                <span
+                  className="
+                    font-mono text-xs font-semibold
+                    text-slate-900
+                  "
+                >
                   SERVIÇOS
                 </span>
               </div>
 
-              <div>
-                <span className="block font-mono text-[10px] text-slate-500 uppercase">
+              <div className="min-w-0">
+                <span
+                  className="
+                    block font-mono text-[10px]
+                    text-slate-500 uppercase
+                  "
+                >
                   Estágio
                 </span>
-                <span className="font-mono text-xs font-semibold text-slate-900">
+
+                <span
+                  className="
+                    font-mono text-xs font-semibold
+                    text-slate-900
+                  "
+                >
                   EM BREVE
                 </span>
               </div>
             </div>
 
+            {/* RODAPÉ */}
             <span
               className="
-                font-heading text-lg font-medium
-                text-slate-600
+                hidden font-heading text-lg
+                font-medium text-slate-600
+                md:block
               "
             >
               Novidades em breve.
             </span>
           </div>
 
-          {/* COLUNA DIREITA — CAPA */}
-        
-{/* COLUNA DIREITA — CAPA PRATIK */}
-        <div
-        ref={pratikImageRef}
-        className={`
-            flex w-full justify-center
-            lg:col-span-5
-
-            transition-[opacity,transform]
-            duration-[1700ms]
-            delay-[200ms]
-            ease-[cubic-bezier(0.22,1,0.36,1)]
-
-            ${
-            isPratikVisible && isPratikLoaded
-                ? "translate-x-0 opacity-100"
-                : "translate-x-[100px] opacity-0 lg:translate-x-[260px]"
-            }
-        `}
-        >
-        <img
-            src="/images/apps/pratik/logopratik.png"
-            alt="Prévia do aplicativo Pratik"
-            loading="eager"
-            onLoad={() => setIsPratikLoaded(true)}
+          {/* COLUNA DIREITA — CAPA PRATIK */}
+          <div
+            ref={pratikImageRef}
             className={`
-            block h-auto w-full
-            max-w-[460px]
-            object-contain
-            lg:max-w-[540px]
+              flex min-w-0 w-full
+              items-center justify-center
+              lg:col-span-5
 
-            ${
-                isPratikVisible && isPratikLoaded
-                ? "pratik-float"
-                : ""
-            }
+              transition-[opacity,transform]
+              duration-[1700ms]
+              delay-[200ms]
+              ease-[cubic-bezier(0.22,1,0.36,1)]
+              motion-reduce:transition-none
+
+              ${
+                showPratik
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-6 opacity-0 lg:translate-x-[260px]"
+              }
             `}
-        />
-        </div>
+          >
+            <img
+              src="/images/apps/pratik/logopratik.png"
+              alt="Prévia do aplicativo Pratik"
+              loading="eager"
+              onLoad={() => setIsPratikLoaded(true)}
+              className={`
+                block h-auto w-full
+                max-w-[160px]
+                object-contain
+                sm:max-w-[250px]
+                md:max-w-[350px]
+                lg:max-w-[540px]
 
-
+                ${showPratik ? "pratik-float" : ""}
+              `}
+            />
+          </div>
         </article>
 
-{/* DIVISÓRIA ENTRE OS APLICATIVOS */}
-<div
-  aria-hidden="true"
-  className="
-    relative z-20
-    my-20 h-px w-full
-    bg-slate-300
-    lg:my-24
-  "
-/>
+        {/* DIVISÓRIA */}
+        <div
+          aria-hidden="true"
+          className="
+            relative z-20
+            my-16 h-px w-full
+            bg-slate-300
+            lg:my-24
+          "
+        />
 
-{/* APP 02 — MOODY */}
-<MoodyShowcase />
-
+        {/* APP 02 — MOODY */}
+        <MoodyShowcase />
 
       </div>
     </section>
