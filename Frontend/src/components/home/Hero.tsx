@@ -1,6 +1,4 @@
 
-import Wolf from "./Wolf";
-
 export default function Hero() {
   return (
     
@@ -37,29 +35,9 @@ export default function Hero() {
         <div className="absolute right-0 bottom-0 h-[400px] w-[600px] rounded-full bg-[#5DE6FF]/10 blur-[180px]" />
       </div>
 
-      {/* LOBO INTERATIVO */}
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-        <div
-          className="
-            w-[110%]
-            max-w-[440px]
-            translate-x-[50px]
-            -scale-x-100
-
-            lg:w-[760px]
-            lg:max-w-none
-            lg:translate-x-[150px]
-
-            xl:w-[980px]
-            xl:translate-x-[250px]
-          "
-        >
-          <Wolf />
-        </div>
-      </div>
 
       {/* IDENTIFICADOR SUPERIOR */}
-      <div className="absolute top-8 left-6 z-10 flex items-center gap-3 sm:left-12 lg:left-20">
+      <div className="absolute top-8 left-6 z-20 flex items-center gap-3 sm:left-12 lg:left-20">
         <span className="h-2 w-2 animate-pulse bg-[#5DE6FF]" />
 
         <span className="font-mono text-[10px] tracking-widest text-[#8F9098] uppercase">
@@ -68,7 +46,7 @@ export default function Hero() {
       </div>
 
       {/* CONTEÚDO À ESQUERDA */}
-      <div className="relative z-10 flex max-w-3xl flex-col items-start">
+      <div className="relative z-20 flex max-w-3xl flex-col items-start">
 
         {/* ETIQUETA */}
         <div className="mb-6 inline-flex items-center gap-2 bg-[#102034]/60 px-3 py-1 backdrop-blur-md">
