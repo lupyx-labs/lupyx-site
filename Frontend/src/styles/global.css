@@ -63,3 +63,48 @@ body {
   }
 }
 
+
+/* Transição de cores do lobo */
+
+.wolf-svg polygon {
+  transition: fill 1.3s ease;
+}
+
+/* Orelha e região inferior */
+.wolf-svg--light #wolf-head > polygon:nth-of-type(1),
+.wolf-svg--light #wolf-head > polygon:nth-of-type(4) {
+  fill: #204F73;
+}
+
+/* Estruturas laterais */
+.wolf-svg--light #wolf-head > polygon:nth-of-type(2),
+.wolf-svg--light #wolf-head > polygon:nth-of-type(5) {
+  fill: #337AA3;
+}
+
+/* Região central do rosto */
+.wolf-svg--light #wolf-head > polygon:nth-of-type(3) {
+  fill: #5CA5C8;
+}
+
+/* Detalhe ciano */
+.wolf-svg--light #wolf-head > polygon:nth-of-type(6) {
+  fill: #22D3EE;
+}
+
+/* Cavidade do olho */
+.wolf-svg--light #wolf-eyes > polygon {
+  fill: #0B1B3A;
+}
+
+/* Pupila */
+.wolf-svg--light #eye-pupil-main {
+  fill: #22D3EE;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wolf-svg polygon {
+    transition: none;
+  }
+}
+
