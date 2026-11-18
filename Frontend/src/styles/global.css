@@ -34,3 +34,32 @@ body {
   margin: 0;
   min-width: 320px;
 }
+
+
+/* Flutuação suave das capas dos aplicativos */
+
+@keyframes pratikFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.pratik-float {
+  animation: pratikFloat 4.5s ease-in-out infinite;
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .pratik-float {
+    animation: none;
+  }
+}
+
