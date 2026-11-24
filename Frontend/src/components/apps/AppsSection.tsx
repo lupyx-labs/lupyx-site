@@ -320,23 +320,25 @@ export default function AppsSection() {
           {/* COLUNA DIREITA — CAPA PRATIK */}
           <div
             ref={pratikImageRef}
-            className={`
-              flex min-w-0 w-full
-              items-center justify-center
-              lg:col-span-5
+          className={`
+            flex min-w-0 w-full
+            items-center justify-center
+            lg:col-span-5
 
-              transition-[opacity,transform]
-              duration-[1700ms]
-              delay-[200ms]
-              ease-[cubic-bezier(0.22,1,0.36,1)]
-              motion-reduce:transition-none
+            transition-[opacity,transform]
+            duration-300
+            ease-out
 
-              ${
-                showPratik
-                  ? "translate-x-0 opacity-100"
-                  : "translate-x-6 opacity-0 lg:translate-x-[260px]"
-              }
-            `}
+            lg:duration-[900ms]
+            lg:ease-[cubic-bezier(0.22,1,0.36,1)]
+
+            ${
+              showPratik
+                ? "translate-x-0 opacity-100"
+                : "translate-x-0 opacity-100 lg:translate-x-12 lg:opacity-0"
+            }
+          `}
+
           >
             <img
               src="/images/apps/pratik/pratik.webp"

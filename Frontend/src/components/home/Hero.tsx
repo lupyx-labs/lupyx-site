@@ -27,7 +27,7 @@ export default function Hero() {
     >
 
       {/* EFEITOS DE FUNDO DO STITCH */}
-      <div className="pointer-events-none absolute inset-0 opacity-40">
+      <div className="pointer-events-none absolute inset-0 hidden opacity-40 lg:block">
         <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#0B1B3A] blur-[140px]" />
 
         <div className="absolute top-1/3 right-1/4 h-[500px] w-[500px] rounded-full bg-[#1B2B3F]/40 blur-[160px]" />
