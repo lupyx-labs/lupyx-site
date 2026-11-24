@@ -339,7 +339,7 @@ export default function AppsSection() {
             `}
           >
             <img
-              src="/images/apps/pratik/logopratik.png"
+              src="/images/apps/pratik/pratik.webp"
               alt="Prévia do aplicativo Pratik"
               loading="lazy"
               decoding="async"
