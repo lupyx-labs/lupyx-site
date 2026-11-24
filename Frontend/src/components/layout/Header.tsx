@@ -33,7 +33,13 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#45464e]/30 bg-[#031427]/80 backdrop-blur-xl">
+    <header className="
+  fixed inset-x-0 top-0 z-50
+  border-b border-[#45464e]/30
+  bg-[#031427]
+  lg:bg-[#031427]/80
+  lg:backdrop-blur-xl
+">
 
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-4 sm:px-8">
 
@@ -51,8 +57,10 @@ export default function Header() {
 >
   <div className="flex h-14 w-14 items-center justify-center">
     <img
-      src="/brand/escuro-semfundo.png"
+      src="/brand/lupyx-header.webp"
       alt=""
+      width={56}
+      height={56}
       className="h-14 w-14 object-contain transition-transform duration-150 group-hover:scale-105"
     />
   </div>

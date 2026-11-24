@@ -22,9 +22,10 @@ export default function MoodyShowcase() {
         "
       >
         <img
-          src="/images/apps/moody/moodylogo.png"
+          src="/images/apps/moody/moody.webp"
           alt="Prévia do aplicativo Moody"
           loading="lazy"
+          decoding="async"
           className="
             block h-auto w-full
             max-w-[160px]
