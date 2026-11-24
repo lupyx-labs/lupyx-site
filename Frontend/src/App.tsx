@@ -1,11 +1,12 @@
 
 import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 import Hero from "./components/home/Hero";
-import WolfExperience from "./components/home/WolfExperience";
 import DawnTransition from "./components/home/DawnTransition";
 import AppsSection from "./components/apps/AppsSection";
-
+import BehindScenes from "./components/home/BehindScenes";
+import WolfExperience from "./components/home/WolfExperience";
 
 function App() {
   return (
@@ -13,22 +14,28 @@ function App() {
       <Header />
 
       <main className="pt-20">
-
-        {/* Área compartilhada da experiência */}
         <div className="relative isolate">
 
-          {/* Conteúdo principal */}
+          {/* 01 — HERO */}
           <Hero />
 
+          {/* 02 — AMANHECER */}
           <DawnTransition />
 
+          {/* 03 — APLICATIVOS */}
           <AppsSection />
 
-          {/* Lobo interativo */}
+          {/* 04 — BASTIDORES */}
+          <BehindScenes />
+
+          {/* LOBO — ENCERRA NOS BASTIDORES */}
           <WolfExperience />
 
         </div>
       </main>
+
+      {/* 05 — CONTATO E FOOTER */}
+      <Footer />
     </>
   );
 }
