@@ -341,7 +341,8 @@ export default function AppsSection() {
             <img
               src="/images/apps/pratik/logopratik.png"
               alt="Prévia do aplicativo Pratik"
-              loading="eager"
+              loading="lazy"
+              decoding="async"
               onLoad={() => setIsPratikLoaded(true)}
               className={`
                 block h-auto w-full
